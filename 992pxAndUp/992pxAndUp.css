@@ -1,0 +1,828 @@
+/*GENERAL SETTINGS. */
+@media only screen and (min-width: 992px) {
+
+:root {  
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-red: #FF0000;
+    --color-darkgreen: #005000;
+    --color-green: #006400;
+    --color-gray: #808080;
+    --color-silver: #C0C0C0;
+    --color-whitesmoke: #F5F5F5;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    width: 0.9rem;
+    background-color: var(--color-whitesmoke);
+}
+
+::-webkit-scrollbar-track {
+        border-radius: 0.9rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10rem;
+    background-color: var(--color-silver);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-gray);
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+    background:
+        linear-gradient(120deg, var(--color-whitesmoke) 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(240deg, var(--color-whitesmoke) 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(0deg, var(--color-whitesmoke) 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: var(--color-gray);
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+    background:
+        linear-gradient(300deg, var(--color-whitesmoke)  40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(60deg, var(--color-whitesmoke)  40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(180deg, var(--color-whitesmoke)  30%, rgba(0, 0, 0, 0) 31%);
+    background-color: var(--color-gray);
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-whitesmoke);
+}
+/* END OF GENERAL SETTINGS. */
+
+/* SIDE MENU SETTINGS. */
+section #screenBlur {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: 0s ease;
+    background-color: var(--color-black);
+    opacity: 60%;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+section #sideMenuContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    left: -100%;
+    transition: 0.5s ease;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+section #sideMenu {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0rem 0rem 0rem 0rem var(--color-gray);
+    background-color: var(--color-darkgreen);
+}
+
+section #sideMenu .sideMenuTitle {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+}
+
+section #sideMenu .sideMenuTitle img {
+    position: relative;
+    width: 1.8rem;
+    height: auto;
+    margin-top: 1.2rem;
+    margin-left: 0.2rem;
+    padding: 0.2rem;
+    transform: translateY(-10%);
+    border-style: solid;
+    border-width: 0.063rem;
+    border-radius: 10rem;
+    border-color: var(--color-white);
+    opacity: 60%;
+}
+
+section #sideMenu .sideMenuTitle p {
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+section #sideMenu #closeSideMenu {
+    width: 1.3rem;
+    height: 1.4rem;
+    padding: 1rem;
+    padding-right: 1.1rem;
+    transform: translateY(-20%);
+    border-width: 0rem;
+    opacity: 50%;
+}
+
+section #sideMenu #closeSideMenu:hover {
+    cursor: pointer;
+}
+
+section #sideMenu .sideMenuItems {
+    display: flex;
+    justify-content: left;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+section #sideMenu .sideMenuItems a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--color-white);
+    opacity: 80%;
+}
+
+section #sideMenu .sideMenuItems a:hover {
+    color: var(--color-silver);
+}
+
+section #sideMenu .sideMenuItems img {
+    width: 1rem;
+    height: 1rem;
+    padding-right: 0.5rem;
+}
+
+section #sideMenu .login a {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    border-style: solid;
+    border-width: 0.063rem;
+    border-radius: 0.2rem;
+    border-color: var(--color-darkgreen);
+    transition: 0.5s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-darkgreen);
+    background-color: var(--color-white);
+}
+
+section #sideMenu .login a:hover{
+    border-color: var(--color-darkgreen);
+    transition: 0.5s ease;
+    color: var(--color-darkgreen);
+    background-color: var(--color-white);
+}
+
+section #sideMenu .sign a {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-style: solid;
+    border-width: 0.063rem;
+    border-radius: 1rem;
+    border-color: transparent;
+    transition: 0.5s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background-color: transparent;
+}
+
+section #sideMenu .sign a:hover{
+    text-decoration: underline;
+}
+
+section hr {
+    width: 90%;
+    opacity: 20%;
+}
+/* END OF SIDE MENU SETTINGS. */
+
+/* HEADER SETTINGS. */
+header {
+    position: fixed;
+    width: 100%;
+    height: 4rem;
+    z-index: 2;
+    background-color: var(--color-darkgreen);
+    opacity: 100%;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+section .headerBackground {
+    position: fixed;
+    width: 100%;
+    height: 4rem;
+    z-index: 1;
+    background-color: var(--color-white);
+    opacity: 80%;
+}
+
+section .headerBlankBackground {
+    width: 100%;
+    height: 6rem;
+    margin-bottom: 0rem;
+    background-color: var(--color-whitesmoke)
+}
+
+header .headerElements {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-width: 0rem;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+header .headerElements img {
+    display: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    z-index: 1;
+    padding: 0.938rem;
+}
+
+header .headerElements #acessMenu{
+    display: block;
+}
+
+header .headerElements .sac {
+    display: block;
+}
+
+header .headerElements .logo {
+    display: block;
+    width: 10rem;
+    height: 2rem;
+    padding-top: 0.5rem;
+    padding-right: 0rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    background-color: var(--color-darkgreen);
+}
+
+header .headerElements .mobileLogo {
+    display: none;
+}
+
+header .headerElements .search {
+    display: block;
+    width: 40%;
+    height: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    border-width: 0rem;
+    border-color: var(--color-darkgreen);
+    border-radius: 0.2rem;
+    font-weight: bold;
+    color: var(--color-gray);
+}
+
+header .headerElements .search::-webkit-search-cancel-button {
+    display: none;
+}
+
+header .headerElements .account {
+    display: block;
+    border-style: solid;
+    border-width: 0.063rem;
+    border-color: var(--color-white);
+    border-radius: 10rem;
+    padding: 0.2rem;
+}
+
+header .headerElements .doLoginOrSign {
+    display: block;
+    width: 11%;
+    padding-left: 1rem;
+    color: var(--color-white);
+    font-size: 0.7rem;
+}
+
+header .headerElements .bag {
+    display: block;
+}
+
+header a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+body .headerOptions {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 4rem;
+    z-index: 2;
+    background-color: var(--color-green);
+}
+
+body .headerOptions ul {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-right: 0;
+    margin-bottom: 0.6rem;
+    margin-left: 0;
+    justify-content: space-around;
+    list-style: none;
+}
+
+body .headerOptions ul li {
+    padding-top: 0;
+    padding-right: 0.2rem;
+    padding-bottom: 0;
+    padding-left: 0.2rem;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+body .headerOptions ul li a {
+    width: auto;
+    height: auto;
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.56rem;
+    padding-left: 0.5rem;
+    text-decoration: none;
+    color: var(--color-white);
+    background-color: var(--color-green);
+}
+
+body .headerOptions ul li a:hover {
+    background-color: var(--color-darkgreen);
+}
+/* END OF HEADER SETTINGS. */
+
+/* MAIN SETTINGS. */
+main {
+    width: 100%;
+    height: auto;
+}
+
+main .mainSlider {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    background-color: var(--color-whitesmoke);
+}
+
+main .slider {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+main .slides {
+    width: 100%;
+    padding-top: 35%;
+}
+
+main .slide {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;   
+    top: 0;
+    left: 0;
+    transition: 1s ease;
+    opacity: 0;
+}
+
+main .slide.active {
+    opacity: 1;
+}
+
+main .slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 0rem;
+}
+
+main .arrows {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    bottom: 1rem;
+    justify-content: space-between;
+    transform: translateY(-300%);
+}
+
+main #previous {
+    width: 3rem;
+    height: 3rem;
+    z-index: 0;
+    margin-left: 1rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    opacity: 50%;
+    background-color: var(--color-silver);
+}
+
+main #previous img {
+    width: 100%;
+    height: auto;
+}
+
+main #next {
+    width: 3rem;
+    height: 3rem;
+    z-index: 0;
+    margin-right: 1rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    opacity: 50%;
+    background-color: var(--color-silver);
+}
+
+main #next img {
+    width: 100%;
+    height: auto;
+}
+
+main .navigation {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+}
+
+main .navigationLink {
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    border-style: solid;
+    border-width: 0.063rem;
+    border-radius: 1rem;
+    border-color: var(--color-whitesmoke);
+    cursor: pointer;
+    background-color: var(--color-whitesmoke);
+}
+
+main .navigationLink.active {
+    border-style: solid;
+    border-width: 0.063rem;
+    border-color: var(--color-darkgreen);
+    background-color: var(--color-darkgreen);
+}
+
+main .bar {
+    display: flex;
+    width: auto;
+    height: 3.75rem;
+    align-items: center;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    background-color: var(--color-darkgreen);
+}
+
+main .bar .barItems {
+    display: flex;
+    width: 98%;
+    height: auto;
+    margin-left: 1%;
+    justify-content: center;
+}
+
+main .bar .barItems h3 {
+    margin: 0;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+main #structureOfTheListOne {
+    width: 1280px;
+    width: 100%;
+    overflow: auto;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: both;
+}
+
+main #structureOfTheListTwo {
+    width: 1280px;
+    width: 100%;
+    overflow: auto;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: both;
+}
+
+main #structureOfTheListOne::-webkit-scrollbar{
+    display: none;
+}
+
+main #structureOfTheListTwo::-webkit-scrollbar{
+    display: none;
+}
+
+main .list {
+    display: flex;
+    width: max-content;
+}
+
+main .item {
+    width: 18rem;
+    height: 30rem;
+    overflow: hidden;
+    margin-right: 1rem;
+    margin-left: 0rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-radius: 0.5rem;
+    border-color: var(--color-silver);
+    background-color: var(--color-white);
+}
+
+main .item a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+main .item .itemImage {
+    display: flex;
+    width: 100%;
+    height: 65%;
+    background-color: var(--color-white);
+}
+
+main .item .itemImage img {
+    display: flex;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    transform: translateY(0%);
+    object-fit: cover;
+}
+
+main .item .itemContent {
+    width: 100%;
+    height: auto;
+    padding-top: 0.5rem;
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+}
+
+main .item .itemContent h2 {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    flex-wrap: wrap;
+    font-size: 1.25rem;
+    opacity: 80%;
+}
+
+main .item .itemContent h3 {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    opacity: 80%;
+}
+
+main .item .itemContent .oldPrice {
+    color: var(--color-gray);
+    text-decoration: line-through;
+}
+
+main .item .itemContent .product {
+    color: var(--color-black);
+}
+
+main .item .itemContent .description {
+    color: var(--color-gray);
+}
+
+main .item .itemContent .price {
+    color: var(--color-darkgreen);
+}
+
+main .item .itemContent .pix {
+    color: var(--color-gray);
+}
+
+main .itemContent .installmentPrice {
+    color: var(--color-gray);
+}
+
+main .directionOne {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    transform: translateY(-700%);
+    cursor: pointer;
+}
+
+main .directionOne img {
+    width: 3rem;
+    border-radius: 10rem;
+    background-color: var(--color-darkgreen);
+    opacity: 70%;
+}
+
+main .directionTwo {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    transform: translateY(-700%);
+    cursor: pointer;
+}
+
+main .directionTwo img {
+    width: 3rem;
+    border-radius: 10rem;
+    background-color: var(--color-darkgreen);
+    opacity: 70%;
+}
+/* END OF THE MAIN SETTINGS. */
+
+/* FOOTER SETTINGS. */
+footer {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    padding-top: 0.625rem;
+    padding-left: 0.938rem;
+    padding-bottom: 1.5rem;
+    color: var(--color-white);
+    background-color: var(--color-green);
+}
+
+footer h2 {
+    width: 100%;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+footer h2:hover {
+    color: var(--color-whitesmoke);
+}
+
+footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li {
+    list-style: none;
+    color: var(--color-white);
+}
+
+footer ul li a {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+footer ul li a:hover {
+    color: var(--color-silver);
+}
+
+footer #paymentMethods {
+    display: flex;
+    width: 98%;
+}
+
+footer #paymentMethods #paymentIcon {
+    width: 2rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+footer #unhidePaymentMethods {
+    display: none;
+}
+
+footer #unhidePaymentMethods img {
+    width: 3rem;
+    padding-right: 0.5rem;
+}
+
+footer #help {
+    display: flex;
+    width: 98%;
+}
+
+footer #paymentMethods #helpIcon {
+    width: 2rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+}
+
+footer #help img {
+    width: 2rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+footer #unhideHelp {
+    display: none;
+}
+
+footer #aboutUs {
+    display: flex;
+    width: 98%;
+}
+
+footer #paymentMethods #aboutUsIcon {
+    width: 2rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+}
+
+footer #aboutUs img {
+    width: 2rem;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+footer #unhideAboutUs {
+    display: none;
+    margin-bottom: 1.25rem;
+}
+
+footer #endText p {
+    width: auto;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+}
+}
+/* END OF FOOTER SETTINGS. */
